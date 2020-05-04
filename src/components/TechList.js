@@ -11,7 +11,7 @@ class TechList extends Component {
 
     //Arrow function para acessar o this
     handleInputChange = e => {
-        // estados são imutaveis, por isso se usa setstate
+        // estados são imutaveis, por isso se usa setstate, não se altera diretamente, setstate cria um novo estado
         this.setState({
             newTech: e.target.value
         })
@@ -20,6 +20,12 @@ class TechList extends Component {
     handleSubmit = e => {
         // Para não carregar a página
         e.preventDefault()
+
+        // É NECESSARIO RECRIAR O ARRAY DO ZERO
+        this.setState({
+            techs : [...this.state.techs, this.state.newTech], // ... spread operator pra copiar tudo que já tinha no array
+            newTech: ''
+        })
     }
 
     render() {
