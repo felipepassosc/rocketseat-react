@@ -7,18 +7,26 @@ class TechList extends Component {
     state = {
         newTech: '',
 
-        techs: [
-            'Nodejs', 'ReactJS'
-        ]
+        techs: []
     }
     // executado assim que o componente aparece em tela
     componentDidMount(){
 
     }
-    // execuatado sempre que houver alterações nas props ou estado
+    // executado sempre que houver alterações nas props ou estado
     componentDidUpdate(prevProps, prevState){
         // this.props, this.state para acessar
         // componentDidUpdate recebe os estados e props antigo
+
+        // Se o estado antigo for diferente do novo, aramazena no localStorage (quando houver alterações)
+        if (prevState !== this.state.techs) {
+            localStorage.setItem('techs', JSON.stringify(this.state.techs))// Como não aceita arrays, transforma em JSON 
+        }
+        // localStorage banco de dados do browser
+    }
+    // executado quando componente deixa de existir
+    componentWillMount(){
+
     }
 
     //Arrow function para acessar o this
@@ -63,7 +71,6 @@ class TechList extends Component {
                         />
                     ))}
                 </ul>
-                <TechItem tech="Express" />
                 <input type="text"
                     onChange={this.handleInputChange}
                     value={this.state.newTech}
