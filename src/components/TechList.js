@@ -29,10 +29,12 @@ class TechList extends Component {
             newTech: ''
         })
     }
-
+    // Quando criamos um componente as funções para manipular o estado precisando ficar no mesmo componente que o estado está
+    // handleDelete por exemplo precisa ficar no mesmo estado que tech
+    // passamos como props para TechItem que recebe como paramatro pra poder usar em seu componente
     handleDelete = tech => {
         this.setState({
-            techs: this.state.techs.filter(tec => tec !== tech )
+            techs: this.state.techs.filter(tec => tec !== tech)
         })
     }
 
@@ -44,9 +46,14 @@ class TechList extends Component {
             <form onSubmit={this.handleSubmit}>
                 <ul>
                     {this.state.techs.map(tech => (
-                        <TechItem key={tech} tech={ tech }/>
+                        <TechItem
+                            key={tech}
+                            tech={tech}
+                            onDelete={() => this.handleDelete(tech)}
+                        />
                     ))}
                 </ul>
+                <TechItem tech="Express" />
                 <input type="text"
                     onChange={this.handleInputChange}
                     value={this.state.newTech}

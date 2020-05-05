@@ -1,11 +1,16 @@
 import React from 'react'
 
-function TechItem() {
+// recebendo as propriedades como parametro, poderia ser props.tech mas estamos usando desestrurção
+function TechItem({ tech, onDelete }) {
     return (
         <li> {tech}
-            <button onClick={() => this.handleDelete(tech)} type="button">Remover</button>
+            <button onClick={onDelete} type="button">Remover</button>
         </li>
     )
 }
 
+// Defautprops, usado quando não for informado, fica com default
+TechItem.defaultProps = {
+    tech: 'Oculto'
+}
 export default TechItem
