@@ -38,12 +38,13 @@ class TechList extends Component {
 
     // () => usando quando queremos passar algo como parametro na hora de chamar a função, mas não queremos executar
     // Key necessita ficar na listagem
+    // PROPS : Tech vai ser passado como propriedade para poder ser usado em "techitem"
     render() {
         return (
             <form onSubmit={this.handleSubmit}>
                 <ul>
                     {this.state.techs.map(tech => (
-                        <TechItem key={tech}/>
+                        <TechItem key={tech} tech={ tech }/>
                     ))}
                 </ul>
                 <input type="text"
