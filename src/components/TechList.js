@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import TechItem from './TechItem'
 
 class TechList extends Component {
+    // static defaultprops, se quisermos colocar defaultprops aqui
     state = {
         newTech: '',
 
