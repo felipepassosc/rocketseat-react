@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 
+import TechItem from './TechItem'
+
 class TechList extends Component {
     state = {
         newTech: '',
@@ -23,22 +25,32 @@ class TechList extends Component {
 
         // É NECESSARIO RECRIAR O ARRAY DO ZERO
         this.setState({
-            techs : [...this.state.techs, this.state.newTech], // ... spread operator pra copiar tudo que já tinha no array
+            techs: [...this.state.techs, this.state.newTech], // ... spread operator pra copiar tudo que já tinha no array
             newTech: ''
         })
     }
 
+    handleDelete = tech => {
+        this.setState({
+            techs: this.state.techs.filter(tec => tec !== tech )
+        })
+    }
+
+    // () => usando quando queremos passar algo como parametro na hora de chamar a função, mas não queremos executar
+    // Key necessita ficar na listagem
     render() {
         return (
             <form onSubmit={this.handleSubmit}>
                 <ul>
-                    {this.state.techs.map(tech => <li key={tech}> {tech} </li>)}
+                    {this.state.techs.map(tech => (
+                        <TechItem key={tech}/>
+                    ))}
                 </ul>
                 <input type="text"
                     onChange={this.handleInputChange}
                     value={this.state.newTech}
                 />
-            <button type="submit"> Enviar</button>
+                <button type="submit"> Enviar</button>
             </form>
         )
     }
