@@ -11,6 +11,15 @@ class TechList extends Component {
             'Nodejs', 'ReactJS'
         ]
     }
+    // executado assim que o componente aparece em tela
+    componentDidMount(){
+
+    }
+    // execuatado sempre que houver alterações nas props ou estado
+    componentDidUpdate(prevProps, prevState){
+        // this.props, this.state para acessar
+        // componentDidUpdate recebe os estados e props antigo
+    }
 
     //Arrow function para acessar o this
     handleInputChange = e => {
